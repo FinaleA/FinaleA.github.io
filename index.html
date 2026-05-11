@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>周小云 · 产品经理</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F8F7F4;
+      --surface: #FFFFFF;
+      --text: #1C1C1C;
+      --text-2: #5A5A5A;
+      --text-3: #9A9A9A;
+      --accent: #2A6049;
+      --accent-soft: #E8F3EE;
+      --accent-mid: #52A882;
+      --border: #E8E8E5;
+      --tag-sub: #FFF4E6;
+      --tag-sub-text: #B45309;
+      --tag-ux: #EEF2FF;
+      --tag-ux-text: #4338CA;
+      --tag-ai: #F0FDF4;
+      --tag-ai-text: #166534;
+      --radius: 12px;
+      --shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.04);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    section { padding: 80px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(248,247,244,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    nav .logo { font-weight: 600; font-size: 15px; letter-spacing: 0.01em; }
+    nav .links { display: flex; gap: 28px; }
+    nav .links a {
+      font-size: 13px; color: var(--text-2); text-decoration: none;
+      font-weight: 500; transition: color 0.2s;
+    }
+    nav .links a:hover { color: var(--accent); }
+
+    /* ── Hero ── */
+    .hero { padding: 100px 0 80px; }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 500; color: var(--accent);
+      background: var(--accent-soft); border-radius: 100px;
+      padding: 4px 12px; margin-bottom: 24px; letter-spacing: 0.04em;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 700; line-height: 1.15;
+      letter-spacing: -0.02em; margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero .subtitle {
+      font-size: 18px; color: var(--text-2);
+      max-width: 580px; margin-bottom: 36px; font-weight: 400;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+    .hero-tag {
+      font-size: 13px; font-weight: 500;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 100px; padding: 6px 16px; color: var(--text-2);
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: 8px;
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      transition: all 0.2s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #1e4d3a; }
+    .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── App Overview ── */
+    .app-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      display: flex; align-items: flex-start; gap: 28px;
+    }
+    .app-icon {
+      width: 72px; height: 72px; border-radius: 18px;
+      background: linear-gradient(135deg, #52A882 0%, #2A6049 100%);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 32px;
+    }
+    .app-info h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+    .app-info .app-desc { color: var(--text-2); font-size: 14px; margin-bottom: 16px; }
+    .app-stats { display: flex; gap: 24px; flex-wrap: wrap; }
+    .app-stat { font-size: 13px; }
+    .app-stat strong { display: block; font-size: 20px; font-weight: 700; color: var(--accent); }
+
+    /* ── Section Header ── */
+    .section-header { margin-bottom: 48px; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .section-header h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+    .section-header p { color: var(--text-2); margin-top: 10px; font-size: 15px; }
+
+    /* ── Case Card ── */
+    .case { margin-bottom: 32px; }
+    .case:last-child { margin-bottom: 0; }
+    .case-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .case-header {
+      padding: 32px 36px 24px;
+      cursor: pointer;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 16px;
+    }
+    .case-header:hover .case-arrow { color: var(--accent); }
+    .case-meta { flex: 1; }
+    .case-tag {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border-radius: 100px; padding: 4px 12px; margin-bottom: 14px;
+    }
+    .tag-sub { background: var(--tag-sub); color: var(--tag-sub-text); }
+    .tag-ux { background: var(--tag-ux); color: var(--tag-ux-text); }
+    .tag-ai { background: var(--tag-ai); color: var(--tag-ai-text); }
+
+    .case-header h3 { font-size: 20px; font-weight: 700; line-height: 1.3; margin-bottom: 10px; }
+    .case-header .case-problem {
+      font-size: 14px; color: var(--text-2); line-height: 1.6;
+    }
+    .case-arrow {
+      font-size: 20px; color: var(--text-3);
+      transition: transform 0.3s, color 0.2s;
+      flex-shrink: 0; margin-top: 2px; user-select: none;
+    }
+    .case-card.open .case-arrow { transform: rotate(180deg); color: var(--accent); }
+
+    .case-body {
+      display: none;
+      padding: 0 36px 36px;
+      border-top: 1px solid var(--border);
+    }
+    .case-card.open .case-body { display: block; }
+
+    .case-metrics {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      padding: 20px 0 28px;
+    }
+    .metric {
+      background: var(--accent-soft);
+      border-radius: 10px; padding: 16px 20px; flex: 1; min-width: 120px;
+    }
+    .metric .metric-val {
+      font-size: 26px; font-weight: 700; color: var(--accent); line-height: 1.2;
+    }
+    .metric .metric-label { font-size: 12px; color: var(--text-2); margin-top: 4px; }
+
+    .case-section { margin-top: 24px; }
+    .case-section h4 {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-3); margin-bottom: 14px;
+    }
+    .case-section ul { padding-left: 0; list-style: none; }
+    .case-section ul li {
+      position: relative; padding-left: 20px;
+      font-size: 14px; color: var(--text-2); margin-bottom: 10px; line-height: 1.65;
+    }
+    .case-section ul li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--accent-mid); font-weight: 700;
+    }
+
+    .case-section p { font-size: 14px; color: var(--text-2); line-height: 1.75; }
+
+    .strategy-block {
+      background: linear-gradient(135deg, #F0FDF4, #E8F5EE);
+      border: 1px solid #BBF7D0;
+      border-radius: 10px; padding: 20px 24px; margin-top: 20px;
+    }
+    .strategy-block .strategy-title {
+      font-size: 12px; font-weight: 700; color: var(--accent);
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .strategy-block p { font-size: 14px; color: #1A4731; line-height: 1.7; }
+
+    .ai-val {
+      background: var(--accent-soft); border-radius: 10px;
+      padding: 14px 18px; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .ai-val .ai-num { font-size: 22px; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+    .ai-val .ai-desc { font-size: 13px; color: var(--text-2); }
+
+    /* ── Skills ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .skill-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 24px;
+    }
+    .skill-card h4 { font-size: 13px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .skill-card p { font-size: 13px; color: var(--text-2); line-height: 1.7; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 48px 0; text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    footer p { font-size: 13px; color: var(--text-3); }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      section { padding: 60px 0; }
+      .hero { padding: 72px 0 60px; }
+      .app-card { flex-direction: column; gap: 16px; padding: 24px; }
+      .case-header { padding: 24px 20px 20px; }
+      .case-body { padding: 0 20px 24px; }
+      nav .links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="container">
+    <span class="logo">周小云</span>
+    <div class="links">
+      <a href="#product">产品</a>
+      <a href="#cases">案例</a>
+      <a href="#skills">技能</a>
+      <a href="mailto:zhouxiaoyun2047@gmail.com">联系我</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-label">📋 产品经理 · 作品集 2026</div>
+    <h1>设计让用户<br>真正<span>留下来</span>的健康产品</h1>
+    <p class="subtitle">
+      3年互联网经验，深耕北美C端健康App——从用户体验到订阅商业化，再到AI落地，
+      完整参与一款健康App从0到1的产品设计全链路。
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag">订阅商业化</span>
+      <span class="hero-tag">AI 产品设计</span>
+      <span class="hero-tag">游戏化体验</span>
+      <span class="hero-tag">北美 C端健康</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#cases">查看案例</a>
+    </div>
+  </div>
+</section>
+
+<!-- Product -->
+<section id="product">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">我参与的产品</div>
+      <h2>Hea! · 北美健康管理 App</h2>
+      <p>面向北美用户的综合健康管理平台，商业模式为会员订阅。覆盖营养、睡眠、运动、情绪四大模块，以 AI 个性化建议 + 游戏化机制解决健康管理"反人性"的核心难题。</p>
+    </div>
+    <div class="app-card">
+      <div class="app-icon" style="background:none;padding:0;overflow:hidden;"><img src="hea-icon.jpg" alt="Hea!" style="width:72px;height:72px;border-radius:18px;display:block;" /></div>
+      <div class="app-info">
+        <h3>Hea! Health Companion</h3>
+        <div class="app-desc">iOS & Android · 北美市场 · 综合健康管理 · 已上线</div>
+        <div class="app-stats">
+          <div class="app-stat"><strong>32.63%</strong>次日留存</div>
+          <div class="app-stat"><strong>14.62%</strong>7日留存</div>
+          <div class="app-stat"><strong>10%</strong>订阅率</div>
+          <div class="app-stat"><strong>7.6%</strong>付费率</div>
+        </div>
+        <div style="margin-top:20px;">
+          <a class="btn btn-secondary" href="https://apps.apple.com/us/app/hea-health-companion/id6744857810" target="_blank" style="font-size:13px;padding:10px 20px;">📱 在 App Store 查看</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cases -->
+<section id="cases">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">核心案例</div>
+      <h2>四个真实决策的故事</h2>
+      <p>每个案例都源于真实的业务问题——我如何发现问题、做出决策、推动结果。</p>
+    </div>
+
+    <!-- Case 1: 订阅商业化 -->
+    <div class="case">
+      <div class="case-card open" id="case1">
+        <div class="case-header" onclick="toggle('case1')">
+          <div class="case-meta">
+            <span class="case-tag tag-sub">订阅商业化</span>
+            <h3>用系统性实验，把订阅 LTV 提升了 135%</h3>
+            <p class="case-problem">北美健康App，商业化初期定价未经验证，ROI为负。如何找到最优解？</p>
+          </div>
+          <div class="case-arrow">↓</div>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="metric">
+              <div class="metric-val">+135%</div>
+              <div class="metric-label">订阅 LTV 提升</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">$0.47</div>
+              <div class="metric-label">LTV（原 $0.20）</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">3轮</div>
+              <div class="metric-label">共 8–9 组 A/B 实验</div>
+            </div>
+          </div>
+
+          <div class="case-section">
+            <h4>背景 · 问题</h4>
+            <p>产品处于商业化早期，订阅是唯一营收来源，但LTV仅$0.20，远未打正ROI。定价策略缺乏数据支撑，团队对"哪个价格/设计能转化用户"没有答案。</p>
+          </div>
+
+          <div class="case-section">
+            <h4>我的决策</h4>
+            <ul>
+              <li><strong>第一轮：</strong>同步验证订阅墙UI改版与更高价格带的转化效果，找到用户价格敏感度的上限；</li>
+              <li><strong>第二轮：</strong>转向低价格带 + 限时折扣组合测试，探索以价格锚点拉动付费转化的路径；</li>
+              <li><strong>第三轮：</strong>配合新版 Onboarding 流程上线，重新测试更高价格带——Onboarding 提升了用户感知价值，为涨价创造条件；</li>
+              <li>全程通过埋点实时监控转化漏斗，持续调整流量分配，推动最优方案落地。</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h4>结果 · 反思</h4>
+            <p>LTV从$0.20增长至$0.47，提升135%，ROI转正。更重要的是：这套实验方法论沉淀下来，成为团队后续所有商业化决策的基础框架。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 2: 首页游戏化 -->
+    <div class="case">
+      <div class="case-card" id="case2">
+        <div class="case-header" onclick="toggle('case2')">
+          <div class="case-meta">
+            <span class="case-tag tag-ux">用户体验 · 新用户认知</span>
+            <h3>重新定义首页：从导航页到每日健康 Dashboard</h3>
+            <p class="case-problem">首页与四大模块逻辑割裂，新用户进入后不知道首页的意义，认知门槛过高。</p>
+          </div>
+          <div class="case-arrow">↓</div>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="metric">
+              <div class="metric-val">+16%</div>
+              <div class="metric-label">首页用户评分提升</div>
+            </div>
+          </div>
+
+          <div class="case-section">
+            <h4>背景 · 问题</h4>
+            <p>健康管理天然反人性——效果反馈周期长，用户很难在短期内感知到坚持的价值。App 覆盖营养、睡眠、运动、情绪四大模块，但各模块逻辑割裂，用户认知门槛高：新用户进入首页，不知道它的意义是什么，更不知道该从哪里开始。如何让用户在没有即时健康反馈的情况下，依然每天主动打开 App？</p>
+          </div>
+
+          <div class="case-section">
+            <h4>我的决策</h4>
+            <ul>
+              <li>主导游戏化首页从0到1，核心逻辑：以1个综合健康指标 + 4个分模块指标构建当日健康 Dashboard，让用户清楚知道"今天该怎么管理健康"；</li>
+              <li>引入 IP 动效反馈机制：用户在 App 内的任何健康记录行为（或未记录）都会触发 IP 动效 + 对话气泡 + 数值反馈，给用户每天打开 App 的理由；</li>
+              <li>以行为设计替代信息堆砌，把"用户看不懂"变成"用户有动力用"。</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h4>结果 · 反思</h4>
+            <p>首页用户评分提升16%。最大的学习：健康反馈周期长，产品必须制造"即时满足感"来对抗反人性——游戏化不是装饰，是健康App留存的核心机制。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 3: 情绪模块 -->
+    <div class="case">
+      <div class="case-card" id="case3">
+        <div class="case-header" onclick="toggle('case3')">
+          <div class="case-meta">
+            <span class="case-tag tag-ux">MVP 验证 · 留存</span>
+            <h3>用用户反馈驱动情绪模块迭代，留存显著提升</h3>
+            <p class="case-problem">情绪模块MVP仅支持5种情绪类型，用户反馈大量涌入——这是问题，也是信号。</p>
+          </div>
+          <div class="case-arrow">↓</div>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="metric">
+              <div class="metric-val">+8pp</div>
+              <div class="metric-label">7日留存（28%→36%）</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">+4pp</div>
+              <div class="metric-label">次日留存（36%→40%）</div>
+            </div>
+          </div>
+
+          <div class="case-section">
+            <h4>背景 · 问题</h4>
+            <p>情绪模块以MVP形态上线，仅支持5种情绪类型。上线后大量用户反馈涌入——我们没有把这些视为"投诉"，而是将其作为验证真实需求的第一手数据：用户希望记录更多元的情绪状态，MVP的覆盖范围远不够用。</p>
+          </div>
+
+          <div class="case-section">
+            <h4>我的决策</h4>
+            <ul>
+              <li>系统梳理200+条用户反馈，识别核心需求信号：情绪类型不足是最高频痛点；</li>
+              <li>主导情绪类型扩展与记录体验迭代，将用户声音直接转化为产品优先级决策；</li>
+              <li>建立"MVP上线→反馈收集→快速迭代"的闭环，而不是在上线前过度设计。</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h4>结果 · 反思</h4>
+            <p>次日留存 36%→40%，7日留存 28%→36%。更重要的收获：用户反馈是健康App迭代最有价值的输入，MVP不是终点，是收集真实数据的起点。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 4: AI -->
+    <div class="case">
+      <div class="case-card" id="case4">
+        <div class="case-header" onclick="toggle('case4')">
+          <div class="case-meta">
+            <span class="case-tag tag-ai">AI 产品战略</span>
+            <h3>在对的时机做对的事：主导健康 App 的 AI 战略落地</h3>
+            <p class="case-problem">AI浪潮来临，健康管理是天然的AI应用场景——但如何把能力变成真正的产品？</p>
+          </div>
+          <div class="case-arrow">↓</div>
+        </div>
+        <div class="case-body">
+
+          <div class="case-section">
+            <h4>战略背景</h4>
+            <p>健康管理面临两个根本矛盾：反人性 + 反馈周期长。游戏化解决的是动力问题，而 AI 解决的是个性化问题——App 积累了用户营养、睡眠、运动、情绪的多维数据，AI 能把这些数据转化成真正贴合个人的健康建议和陪伴体验。但大多数健康 App 的 AI 还停留在"加个对话框"的阶段，真正的挑战是：如何让 AI 读懂用户数据、在合适时机介入、同时守住能力边界（wellness coaching，非医疗诊断）？</p>
+          </div>
+
+          <div class="strategy-block">
+            <div class="strategy-title">公司判断</div>
+            <p>在AI基础设施尚未成熟的窗口期，提前验证AI在C端健康场景的落地路径，建立技术护城河与产品差异化。这是一次主动押注，不是追热点。</p>
+          </div>
+
+          <div class="case-section" style="margin-top: 28px;">
+            <h4>我主导的两个 AI 产品</h4>
+          </div>
+
+          <div class="case-section">
+            <h4>① MVP AI Health Chatbot（已上线）</h4>
+            <ul>
+              <li>设计双模式数据架构：冷启动期用结构化数据注入建立用户健康画像，会话中通过MCP按需调用实时数据——解决"AI不了解我"的冷启动问题；</li>
+              <li>定义3个差异化入口与AI能力边界，明确"健康教练"而非"医疗诊断"的定位，规避合规风险；</li>
+              <li>上线后埋点分析，定位冷启动中断率与对话深度不足的问题，推动优化排期。</li>
+            </ul>
+          </div>
+
+          <div class="ai-val">
+            <div class="ai-num">7.3%</div>
+            <div class="ai-desc">首页入口点击率 — MVP上线首周，验证核心需求存在</div>
+          </div>
+
+          <div class="case-section">
+            <h4>② AI-driven Onboarding（开发中）</h4>
+            <ul>
+              <li>采用Agent + Graph-based Workflow方案，定义节点与条件边逻辑，让Onboarding根据用户健康目标动态分支；</li>
+              <li>使用Codex跑通产品原型，完成技术可行性验证，解决与订阅、登录注册等老需求的耦合问题；</li>
+              <li>目标：提升新用户进入时的订阅转化率——通过 AI 驱动的个性化 Onboarding，让用户在首次体验时感知到产品价值，降低付费决策门槛。</li>
+            </ul>
+          </div>
+
+          <div class="strategy-block">
+            <div class="strategy-title">这对下一家健康 App 意味着什么</div>
+            <p>AI不是一个功能，是一种产品能力的重构。健康App积累了丰富的用户行为数据——AI的价值在于把这些数据转化成个性化的健康干预。这条路我已经走过一段，知道哪里有坑，也知道哪里有机会。</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- PRD 入口 -->
+    <div style="text-align:center;margin-top:48px;padding-top:40px;border-top:1px solid var(--border);">
+      <p style="font-size:14px;color:var(--text-2);margin-bottom:16px;">想了解具体的原型设计与 PRD？</p>
+      <a class="btn btn-secondary" href="https://www.notion.so/2604-PRD-v1-1-34abb45795b280ad96aafa0ae37e4527" target="_blank">查看完整原型 & PRD ↗</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">能力全貌</div>
+      <h2>不只是产品设计</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>产品设计</h4>
+        <p>需求分析、PRD撰写、原型设计（Figma / Axure）、用户反馈挖掘、跨端流程梳理</p>
+      </div>
+      <div class="skill-card">
+        <h4>数据驱动</h4>
+        <p>埋点设计、A/B实验设计与分析、GA + SQL、从数据到决策的完整闭环</p>
+      </div>
+      <div class="skill-card">
+        <h4>AI 应用</h4>
+        <p>Agent Workflow设计、MCP数据架构、提示词工程；日常使用Claude Code / Cursor / Dify</p>
+      </div>
+      <div class="skill-card">
+        <h4>国际化</h4>
+        <p>英语熟练（TEM-8 / 雅思6.5）、北美市场C端经验、中英文双语产品设计与沟通</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>周小云 · 产品经理 · <a href="mailto:zhouxiaoyun2047@gmail.com">zhouxiaoyun2047@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+  function toggle(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
