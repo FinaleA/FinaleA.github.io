@@ -639,16 +639,37 @@
 
   function copyEmail(e) {
     e.preventDefault();
-    navigator.clipboard.writeText('zhouxiaoyun2047@gmail.com').then(() => {
-      const link = e.currentTarget;
-      const original = link.textContent;
-      link.textContent = '邮箱已复制 ✓';
-      link.style.opacity = '0.75';
-      setTimeout(() => {
-        link.textContent = original;
-        link.style.opacity = '';
-      }, 2000);
-    });
+    const link = e.currentTarget;
+    const original = link.textContent;
+
+    // 先给反馈，不等 clipboard 结果
+    link.textContent = '邮箱已复制 ✓';
+    link.style.opacity = '0.75';
+    setTimeout(() => {
+      link.textContent = original;
+      link.style.opacity = '';
+    }, 2000);
+
+    // 尝试写剪贴板
+    const email = 'zhouxiaoyun2047@gmail.com';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).catch(() => {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = email;
+        ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+      });
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = email;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
   }
 </script>
 
