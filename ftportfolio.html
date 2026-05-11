@@ -311,7 +311,8 @@
           <span class="hero-tag">创意工具</span>
         </div>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#cases">查看案例</a>
+          <a class="btn btn-primary" href="#" onclick="copyEmail(event)">联系我</a>
+          <a class="btn btn-secondary" href="#cases">查看案例</a>
         </div>
       </div>
       <div class="hero-phone">
@@ -359,9 +360,68 @@
       <p>每个案例都源于真实的业务问题——我如何发现问题、做出决策、推动结果。</p>
     </div>
 
+    <!-- Case 4 → 第一位: AI -->
+    <div class="case">
+      <div class="case-card open" id="case4">
+        <div class="case-header" onclick="toggle('case4')">
+          <div class="case-meta">
+            <span class="case-tag tag-ai">AI 产品战略</span>
+            <h3>在对的时机做对的事：主导健康 App 的 AI 战略落地</h3>
+            <p class="case-problem">AI浪潮来临，健康管理是天然的AI应用场景——但如何把能力变成真正的产品？</p>
+          </div>
+          <div class="case-arrow">↓</div>
+        </div>
+        <div class="case-body">
+
+          <div class="case-section">
+            <h4>战略背景</h4>
+            <p>健康管理面临两个根本矛盾：反人性 + 反馈周期长。游戏化解决的是动力问题，而 AI 解决的是个性化问题——App 积累了用户营养、睡眠、运动、情绪的多维数据，AI 能把这些数据转化成真正贴合个人的健康建议和陪伴体验。但大多数健康 App 的 AI 还停留在"加个对话框"的阶段，真正的挑战是：如何让 AI 读懂用户数据、在合适时机介入、同时守住能力边界（wellness coaching，非医疗诊断）？</p>
+          </div>
+
+          <div class="strategy-block">
+            <div class="strategy-title">公司判断</div>
+            <p>在AI基础设施尚未成熟的窗口期，提前验证AI在C端健康场景的落地路径，建立技术护城河与产品差异化。这是一次主动押注，不是追热点。</p>
+          </div>
+
+          <div class="case-section" style="margin-top: 28px;">
+            <h4>我主导的两个 AI 产品</h4>
+          </div>
+
+          <div class="case-section">
+            <h4>① MVP AI Health Chatbot（已上线）</h4>
+            <ul>
+              <li>设计双模式数据架构：冷启动期用结构化数据注入建立用户健康画像，会话中通过MCP按需调用实时数据——解决"AI不了解我"的冷启动问题；</li>
+              <li>定义3个差异化入口与AI能力边界，明确"健康教练"而非"医疗诊断"的定位，规避合规风险；</li>
+              <li>上线后埋点分析，定位冷启动中断率与对话深度不足的问题，推动优化排期。</li>
+            </ul>
+          </div>
+
+          <div class="ai-val">
+            <div class="ai-num">7.3%</div>
+            <div class="ai-desc">首页入口点击率 — MVP上线首周，验证核心需求存在</div>
+          </div>
+
+          <div class="case-section">
+            <h4>② AI-driven Onboarding（开发中）</h4>
+            <ul>
+              <li>采用Agent + Graph-based Workflow方案，定义节点与条件边逻辑，让Onboarding根据用户健康目标动态分支；</li>
+              <li>使用Codex跑通产品原型，完成技术可行性验证，解决与订阅、登录注册等老需求的耦合问题；</li>
+              <li>目标：提升新用户进入时的订阅转化率——通过 AI 驱动的个性化 Onboarding，让用户在首次体验时感知到产品价值，降低付费决策门槛。</li>
+            </ul>
+          </div>
+
+          <div class="strategy-block">
+            <div class="strategy-title">这对 AI 创意工具产品意味着什么</div>
+            <p>AI不是一个滤镜，是创意工具体验的重构。用户的创作行为数据——风格偏好、使用路径、创作习惯——能让AI真正理解每个用户，而不只是提供通用功能。C端AI产品的核心挑战是：在对的时机、用对的方式介入，不打断创作心流，同时降低创意门槛。这条落地路径我已经走过一段，知道哪里有坑，也知道哪里有机会。</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <!-- Case 1: 订阅商业化 -->
     <div class="case">
-      <div class="case-card open" id="case1">
+      <div class="case-card" id="case1">
         <div class="case-header" onclick="toggle('case1')">
           <div class="case-meta">
             <span class="case-tag tag-sub">订阅商业化</span>
@@ -491,65 +551,6 @@
             <h4>结果 · 反思</h4>
             <p>次日留存 36%→40%，7日留存 28%→36%。更重要的收获：用户反馈是健康App迭代最有价值的输入，MVP不是终点，是收集真实数据的起点。</p>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Case 4: AI -->
-    <div class="case">
-      <div class="case-card" id="case4">
-        <div class="case-header" onclick="toggle('case4')">
-          <div class="case-meta">
-            <span class="case-tag tag-ai">AI 产品战略</span>
-            <h3>在对的时机做对的事：主导健康 App 的 AI 战略落地</h3>
-            <p class="case-problem">AI浪潮来临，健康管理是天然的AI应用场景——但如何把能力变成真正的产品？</p>
-          </div>
-          <div class="case-arrow">↓</div>
-        </div>
-        <div class="case-body">
-
-          <div class="case-section">
-            <h4>战略背景</h4>
-            <p>健康管理面临两个根本矛盾：反人性 + 反馈周期长。游戏化解决的是动力问题，而 AI 解决的是个性化问题——App 积累了用户营养、睡眠、运动、情绪的多维数据，AI 能把这些数据转化成真正贴合个人的健康建议和陪伴体验。但大多数健康 App 的 AI 还停留在"加个对话框"的阶段，真正的挑战是：如何让 AI 读懂用户数据、在合适时机介入、同时守住能力边界（wellness coaching，非医疗诊断）？</p>
-          </div>
-
-          <div class="strategy-block">
-            <div class="strategy-title">公司判断</div>
-            <p>在AI基础设施尚未成熟的窗口期，提前验证AI在C端健康场景的落地路径，建立技术护城河与产品差异化。这是一次主动押注，不是追热点。</p>
-          </div>
-
-          <div class="case-section" style="margin-top: 28px;">
-            <h4>我主导的两个 AI 产品</h4>
-          </div>
-
-          <div class="case-section">
-            <h4>① MVP AI Health Chatbot（已上线）</h4>
-            <ul>
-              <li>设计双模式数据架构：冷启动期用结构化数据注入建立用户健康画像，会话中通过MCP按需调用实时数据——解决"AI不了解我"的冷启动问题；</li>
-              <li>定义3个差异化入口与AI能力边界，明确"健康教练"而非"医疗诊断"的定位，规避合规风险；</li>
-              <li>上线后埋点分析，定位冷启动中断率与对话深度不足的问题，推动优化排期。</li>
-            </ul>
-          </div>
-
-          <div class="ai-val">
-            <div class="ai-num">7.3%</div>
-            <div class="ai-desc">首页入口点击率 — MVP上线首周，验证核心需求存在</div>
-          </div>
-
-          <div class="case-section">
-            <h4>② AI-driven Onboarding（开发中）</h4>
-            <ul>
-              <li>采用Agent + Graph-based Workflow方案，定义节点与条件边逻辑，让Onboarding根据用户健康目标动态分支；</li>
-              <li>使用Codex跑通产品原型，完成技术可行性验证，解决与订阅、登录注册等老需求的耦合问题；</li>
-              <li>目标：提升新用户进入时的订阅转化率——通过 AI 驱动的个性化 Onboarding，让用户在首次体验时感知到产品价值，降低付费决策门槛。</li>
-            </ul>
-          </div>
-
-          <div class="strategy-block">
-            <div class="strategy-title">这对 AI 创意工具产品意味着什么</div>
-            <p>AI不是一个滤镜，是创意工具体验的重构。用户的创作行为数据——风格偏好、使用路径、创作习惯——能让AI真正理解每个用户，而不只是提供通用功能。C端AI产品的核心挑战是：在对的时机、用对的方式介入，不打断创作心流，同时降低创意门槛。这条落地路径我已经走过一段，知道哪里有坑，也知道哪里有机会。</p>
-          </div>
-
         </div>
       </div>
     </div>
