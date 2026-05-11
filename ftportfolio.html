@@ -640,13 +640,13 @@
   function copyEmail(e) {
     e.preventDefault();
     navigator.clipboard.writeText('zhouxiaoyun2047@gmail.com').then(() => {
-      const link = e.target;
+      const link = e.currentTarget;
       const original = link.textContent;
       link.textContent = '邮箱已复制 ✓';
-      link.style.color = 'var(--accent)';
+      link.style.opacity = '0.75';
       setTimeout(() => {
         link.textContent = original;
-        link.style.color = '';
+        link.style.opacity = '';
       }, 2000);
     });
   }
